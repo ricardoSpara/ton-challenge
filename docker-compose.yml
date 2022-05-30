@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    networks:
+      - app-network
+    container_name: app
+    entrypoint: dockerize -wait tcp://db:5432 -timeout 40s ./entrypoint.sh
+    ports:
+      - '${APP_PORT:-3000}:${APP_PORT:-3000}'
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - '.:/usr/app'
+    depends_on:
+      - db
+    restart: on-failure
+
+  db:
+    image: 'postgres:alpine'
+    networks:
+      - app-network
+    container_name: db
+    environment:
+      POSTGRES_DB: challenge_db
+      POSTGRES_USER: ${POSTGRES_USER:-docker}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-docker}
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./.docker/dbdata:/var/lib/postgresql
+
+networks:
+  app-network:
+    driver: bridge
