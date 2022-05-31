@@ -17,6 +17,10 @@ class FakeUsersRepository implements IUsersRepository {
     }
   }
 
+  async list(): Promise<User[]> {
+    return this.users;
+  }
+
   async findById(id: string): Promise<User | undefined> {
     const findUser = this.users.find((user) => user.id === id);
 
@@ -25,12 +29,6 @@ class FakeUsersRepository implements IUsersRepository {
 
   async findByCpf(cpf: string): Promise<User | undefined> {
     const findUser = this.users.find((user) => user.cpf === cpf);
-
-    return findUser;
-  }
-
-  async findByCnpj(cnpj: string): Promise<User | undefined> {
-    const findUser = this.users.find((user) => user.cnpj === cnpj);
 
     return findUser;
   }

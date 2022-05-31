@@ -14,8 +14,14 @@ class UsersRepository implements IUsersRepository {
     await this.repository.save(user);
   }
 
+  async list(): Promise<User[]> {
+    const users = await this.repository.find();
+
+    return users;
+  }
+
   async findById(id: string): Promise<User | undefined> {
-    const user = this.repository.findOne({
+    const user = await this.repository.findOne({
       where: {
         id,
       },
@@ -25,7 +31,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   async findByCpf(cpf: string): Promise<User | undefined> {
-    const user = this.repository.findOne({
+    const user = await this.repository.findOne({
       where: {
         cpf,
       },
@@ -35,7 +41,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   async findByEmail(email: string): Promise<User | undefined> {
-    const user = this.repository.findOne({
+    const user = await this.repository.findOne({
       where: {
         email,
       },
