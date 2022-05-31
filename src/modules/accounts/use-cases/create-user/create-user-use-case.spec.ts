@@ -49,22 +49,22 @@ describe("CreateUser", () => {
     );
   });
 
-  // it("should not be able to create a new user with same cpf another", async () => {
-  //   const userData = {
-  //     id: generateId(),
-  //     full_name: "John doe",
-  //     email: "johndoe@test.com",
-  //     password: "test@123",
-  //     cpf: "941.161.440-02",
-  //   };
+  it("should not be able to create a new user with same cpf another", async () => {
+    const userData = {
+      id: generateId(),
+      full_name: "John doe",
+      email: "johndoe@test.com",
+      password: "test@123",
+      cpf: "941.161.440-02",
+    };
 
-  //   const user = UserFactory.create(userData);
-  //   fakeUsersRepository.save(user);
+    const user = UserFactory.create(userData);
+    fakeUsersRepository.save(user);
 
-  //   userData.email = "johndoe2@test.com";
+    userData.email = "johndoe2@test.com";
 
-  //   await expect(sut.execute(userData)).rejects.toEqual(
-  //     new AppError("Cpf already used")
-  //   );
-  // });
+    await expect(sut.execute(userData)).rejects.toEqual(
+      new AppError("Cpf already used")
+    );
+  });
 });

@@ -29,6 +29,12 @@ class CreateUserUseCase {
       throw new AppError("Email address already used");
     }
 
+    const checkCpfExists = await this.usersRepository.findByCpf(cpf);
+
+    if (checkCpfExists) {
+      throw new AppError("Cpf already used");
+    }
+
     const hashedPassword = await this.hashProvider.generateHash(password);
     const userData = {
       full_name,
