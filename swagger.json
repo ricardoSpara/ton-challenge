@@ -72,6 +72,35 @@
           }
         }
       }
+    },
+    "/users/{userId}": {
+      "get": {
+        "summary": "Lista um usuário",
+        "description": "Lista um usuário",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "ID do usuário",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
     }
   }
 }
