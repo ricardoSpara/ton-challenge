@@ -56,6 +56,21 @@
             "description": "Internal server error"
           }
         }
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Lista todos usuários",
+        "description": "Lista todos usuários",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
       }
     }
   }
