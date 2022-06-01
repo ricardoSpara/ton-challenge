@@ -3,7 +3,7 @@ import { IAccessProvider } from "@shared/providers/access-provider/iaccess-provi
 import { inject, injectable } from "tsyringe";
 
 @injectable()
-class ShowOfTotalAccessUseCase {
+class ShowTotalOfAccessUseCase {
   constructor(
     @inject("AccessProvider")
     private accessProvider: IAccessProvider
@@ -19,4 +19,4 @@ class ShowOfTotalAccessUseCase {
   }
 }
 
-export { ShowOfTotalAccessUseCase };
+export { ShowTotalOfAccessUseCase };
