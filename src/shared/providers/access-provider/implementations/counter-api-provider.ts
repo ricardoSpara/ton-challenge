@@ -20,16 +20,14 @@ class CounterApiProvider implements IAccessProvider {
   public async showTotalOfAccess(
     namespace: string,
     key: string
-  ): Promise<number | undefined> {
+  ): Promise<number> {
     try {
-      const totalOfAccess: number = await this.accessService.get(
-        `/get/${namespace}/${key}`
-      );
+      const { data } = await this.accessService.get(`/get/${namespace}/${key}`);
 
-      return totalOfAccess;
+      return data.value;
     } catch (err) {
       console.error("Error when getting the total of access", err.message);
-      return undefined;
+      return 0;
     }
   }
 }

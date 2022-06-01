@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 
 import { IncreaseAccessUseCase } from "./increase-access-use-case";
 
-class IncreseAcessController {
+class IncreseAccessController {
   async handle(request: Request, response: Response): Promise<Response> {
     const increaseAccessUseCase = container.resolve(IncreaseAccessUseCase);
 
@@ -13,4 +13,4 @@ class IncreseAcessController {
   }
 }
 
-export { IncreseAcessController };
+export { IncreseAccessController };

@@ -3,15 +3,20 @@ import { IAccessProvider } from "@shared/providers/access-provider/iaccess-provi
 import { inject, injectable } from "tsyringe";
 
 @injectable()
-class IncreaseAccessUseCase {
+class ShowOfTotalAccessUseCase {
   constructor(
     @inject("AccessProvider")
     private accessProvider: IAccessProvider
   ) {}
 
-  async execute(): Promise<void> {
-    await this.accessProvider.increaseAccess(namespace, key);
+  async execute(): Promise<number> {
+    const totalOfAccess = await this.accessProvider.showTotalOfAccess(
+      namespace,
+      key
+    );
+
+    return totalOfAccess;
   }
 }
 
-export { IncreaseAccessUseCase };
+export { ShowOfTotalAccessUseCase };

@@ -26,7 +26,11 @@ class FakeAccessProvider implements IAccessProvider {
   public async showTotalOfAccess(
     namespace: string,
     key: string
-  ): Promise<number | undefined> {
+  ): Promise<number> {
+    if (!this.totalOfAccess[namespace] || !this.totalOfAccess[namespace][key]) {
+      return 0;
+    }
+
     return this.totalOfAccess[namespace][key];
   }
 }

@@ -3,7 +3,7 @@ interface IAccessProvider {
   showTotalOfAccess(
     namespace: string,
     key: string
-  ): Promise<number | undefined>;
+  ): Promise<number>;
 }
 
 export { IAccessProvider };
