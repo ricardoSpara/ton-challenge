@@ -101,6 +101,23 @@
           }
         }
       }
+    },
+    "/accesses": {
+      "post": {
+        "tags": [
+          "Accesses"
+        ],
+        "summary": "Incrementa um acesso no site",
+        "description": "Incrementa um acesso no site",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
     }
   }
 }
